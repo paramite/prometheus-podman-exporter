@@ -12,7 +12,7 @@ RUN make binary
 # --- end build, create podman_exporter layer ---
 FROM registry.access.redhat.com/ubi9:latest
 
-RUN dnf install -y device-mapper-devel libassuan-devel
+RUN dnf install -y device-mapper-libs libassuan
 COPY --from=builder /go/src/github.com/containers/prometheus-podman-exporter/bin/prometheus-podman-exporter /bin/podman_exporter
 
 EXPOSE 9882
